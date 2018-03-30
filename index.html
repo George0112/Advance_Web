@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Hot Video</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<!-- Material Design -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </head>
+  <body data-target="#navbar-spy" data-spy="scroll">
+    <!--  navbar  -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid" id='navbar-spy'>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavigiator" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Videos</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavigiator">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href='#partI'>partI</a></li>
+                    <li><a href='#partII'>partII</a></li>
+                    <li><a href='#partIII'>partIII</a></li>
+                </ul>
+                <ul>
+                    <form class="navbar-form navbar-right" action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" value="">
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">Submit</button>
+                            <button type="button" class="btn btn-primary">Sign up</button>
+                            <button type="button" class="btn btn-danger">Log in</button>
+                        </div>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--  content  -->
+    <div class='container'>
+        <div id='partI'>
+            <h3>partI</h3>
+            <div class='row'>
+                <div class='col col-md-12 col-lg-6'>
+                    <div id='player'></div>
+                </div>
+                <div class='col col-lg-6'>
+                    <ol class='list-group control-time'>
+                        <a class='list-group-item' onclick='playAt(30)'>00:30</a>
+                        <a class='list-group-item' onclick='playAt(60)'>01:00</a>
+                        <a class='list-group-item' onclick='playAt(90)'>01:30</a>
+                        <a class='list-group-item' onclick='playAt(120)'>02:00</a>
+                        <a class='list-group-item' onclick='playAt(150)'>02:30</a>
+                        <a class='list-group-item' onclick='playAt(180)'>03:00</a>
+                        <a class='list-group-item' onclick='playAt(210)'>03:30</a>
+                        <a class='list-group-item' onclick='playAt(240)'>04:00</a>
+                        <a class='list-group-item' onclick='playAt(270)'>04:30</a>
+                        <a class='list-group-item' onclick='playAt(300)'>05:00</a>
+                        <a class='list-group-item' onclick='playAt(330)'>05:30</a>
+                        <a class='list-group-item' onclick='playAt(360)'>06:00</a>
+                    </ol>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col col-md-6 col-sm-12 col-lg-6'>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/duURQsinObA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class='col col-md-6 col-lg-6'>
+                    <ol>
+                    </ol>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col col-md-6 col-sm-12'>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/NJ-x6kgwqjo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div id='partII'>
+            <div class='row'>
+                <h3>partII</h3>
+                <div class='col col-md-6 col-sm-12 col-lg-6'>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/duURQsinObA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class='col col-md-6 col-lg-6'>
+                    <ol>
+                    </ol>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col col-md-6 col-sm-12'>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/NJ-x6kgwqjo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div id='partIII'>
+            <div class='row'>
+                <h3>partIII</h3>
+                <div class='col col-md-6 col-sm-12 col-lg-6'>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/duURQsinObA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class='col col-md-6 col-lg-6'>
+                    <ol>
+                    </ol>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col col-md-6 col-sm-12'>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/NJ-x6kgwqjo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  footer -->
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
+
+<style>
+    .col{
+        align-content: center;
+        align-self: center;
+    }
+    .iframe{
+        align-self: center;
+    }
+    nav{
+        display: block;
+        margin: 0 0 70px 0;
+    }
+    body{
+        padding-top: 80px;
+        position: relative;
+    }
+    .scroll-text{
+        height: 400px;
+        overflow: scroll;
+    }
+    .control-time{
+        overflow: scroll;
+        height: 380px;
+        padding: 20px;
+        margin-top: 20px'
+    }
+
+</style>
