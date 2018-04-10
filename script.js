@@ -13,10 +13,10 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '400',
         width: '100%',
-        videoId: 'zvJ3Op1OxNM',
+        videoId: '9zumV39nm60',
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            //'onStateChange': onPlayerStateChange
         }
     });
 }
