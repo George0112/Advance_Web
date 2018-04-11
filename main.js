@@ -70,7 +70,7 @@ for(var i=obj.length-1;i>=0;i--){
   textlink.href = `./video.html?id=${obj[i].videoId}`;
   caption.insertBefore(textlink, caption.childNodes[0]);
 //title
-  var title = document.createElement('div');
+  var title = document.createElement('h3');
   var stringtitle = obj[i].title;
   var titletext = document.createTextNode(stringtitle);
   title.appendChild(titletext);
