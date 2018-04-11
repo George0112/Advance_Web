@@ -13,12 +13,35 @@ body{
 }
 .index-describe{
   font-size: 4rem;
+  font-weight: 700;
   color: white;
   width: 100%;
   position: absolute;
   top: 200px;
   left: 100px;
   text-shadow: 2px 2px #000000;
+}
+.index-input{
+  position: absolute;
+  top: 375px;
+  left: 100px;
+  width: 432px;
+  height: 40px;
+  border: solid 1px black;
+}
+.index-input-banner{
+  width: 432px;
+  height: 38px;
+}
+.index-input-btn{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: white;
+  padding: 5px 10px;;
+  border: 0px;
+  border-left: solid 1px black;
+  height: 38px;
 }
 .row{
   margin:0 10%;
@@ -45,5 +68,48 @@ h3{
   flex-wrap: wrap;
 }
 .thumbnail{
-  min-height: 300px;
+  min-height: 280px;
+  min-width: 170px;
+
+}
+.btn-tag{
+  border-radius : 3px;
+  line-height : 14px;
+
+  padding: 2px 4px;
+  margin-right: 0.5rem;
+  font-size: 11.84px;
+  font-weight: 700;
+  width: 45px;
+  height: 16px;
+}
+.btn-like{
+  background-color: rgb(153,153,153);
+  color: white;
+  padding: 4px 4px;
+  position: relative;
+  margin: 0 0 0 3rem;
+  font-size: 9px;
+}
+.timedisplay{
+  display: inline;
+}
+.title .tooltip{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.title:hover .tooltip{
+    visibility: visible;
+}
+#hidden{
+  display: none;
 }

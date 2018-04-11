@@ -1,4 +1,6 @@
 var json = JSON.parse(video9);
+var url=window.location.href;
+console.log(url);
 
 $(function(){
     $.each(json[0].transcripts, function(index, d){
