@@ -1,4 +1,16 @@
 
+$(function(){
+    //var subtitile = [];
+    $.get('video9.json', function(data){
+        $.parseJSON(data, function(data){
+            $.each(json, function(index, d){
+                var subtitle = "<p>" + d + "<\p>";
+                $(subtitle).appendTo('#subtitle');
+            });
+        });
+    });
+});
+
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
