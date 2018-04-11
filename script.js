@@ -1,21 +1,14 @@
-<<<<<<< HEAD
+var json = JSON.parse(video9);
 var url=window.location.href;
 console.log(url);
-=======
 
 $(function(){
-    //var subtitile = [];
-    $.get('video9.json', function(data){
-        $.parseJSON(data, function(data){
-            $.each(json, function(index, d){
-                var subtitle = "<p>" + d + "<\p>";
-                $(subtitle).appendTo('#subtitle');
-            });
-        });
+    $.each(json[0].transcripts, function(index, d){
+        var sub = "<a class='list-group-item' onclick='playAt(" + d.t + ")'>" + d.text + "</a>"
+        $(sub).appendTo('#subtitle');
     });
 });
 
->>>>>>> d191e05d705e47609b98c9b88cb48403b908549c
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
