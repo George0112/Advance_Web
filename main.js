@@ -70,11 +70,19 @@ for(var i=obj.length-1;i>=0;i--){
   textlink.href = `./video.html?id=${obj[i].videoId}`;
   caption.insertBefore(textlink, caption.childNodes[0]);
 //title
-  var title = document.createElement('h3');
+  var title = document.createElement('div');
   var stringtitle = obj[i].title;
   var titletext = document.createTextNode(stringtitle);
   title.appendChild(titletext);
+  title.className = "title";
   textlink.insertBefore(title, textlink.childNodes[0]);
+//title-tooltip
+  var tooltip = document.createElement('span');
+  var stringtootip = obj[i].title;
+  var tootiptext = document.createTextNode(stringtootip);
+  tooltip.appendChild(tootiptext);
+  tooltip.className = "tooltip";
+  title.insertBefore(tooltip, title.childNodes[0]);
 }
 var submit = document.querySelector(".index-input-btn");
 submit.addEventListener("click", function() {
