@@ -13,17 +13,89 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </head>
   <body>
-	<div class='col col-md-6'>
-		<div id='player'></div>
-	</div>
-    <div class='col col-md-6'>
-		<ol class='list-group control-time' id='subtitle'>
-		</ol>
-	</div>
-    <script src="video7.json" type="text/javascript"></script>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.12&appId=302426613527304&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid" id='navbar-spy'>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavigiator" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Videos</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavigiator">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">partI <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">item1</a></li>
+                        <li><a href="#">item2</a></li>
+                        <li><a href="#">item3</a></li>
+                        <li><a href="#">item4</a></li>
+                      </ul>
+                    </li>
+                    <li><a href='./video.html'>partII</a></li>
+                    <li><a href='#partIII'>partIII</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class='container'>
+      <div class='row'>
+          <div class='col col-md-6'>
+              <div id='player'></div>
+          </div>
+            <div class='col col-md-6'>
+            <ol class='list-group control-time' id='subtitle'></ol>
+          </div>
+      </div>
+    </div>
+    <div class="fb-comments" data-href="http://140.114.79.72" data-width="880" data-numposts="5"></div>
+    <script src="video6.json" type="text/javascript"></script>
     <script src="video9.json" type="text/javascript"></script>
     <script src="script.js"></script>
   </body>
 
 </html>
 
+<style>
+    .col{
+        align-content: center;
+        align-self: center;
+    }
+    .iframe{
+        align-self: center;
+    }
+    nav{
+        display: block;
+        margin: 0 0 70px 0;
+    }
+    body{
+
+        position: relative;
+    }
+    .scroll-text{
+        height: 400px;
+        overflow: scroll;
+    }
+    .control-time{
+        overflow: scroll;
+        height: 380px;
+        padding: 20px;
+        margin-top: 20px'
+    }
+    .container{
+      margin-top: 70px;
+    }
+
+</style>
