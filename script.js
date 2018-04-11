@@ -1,13 +1,9 @@
+var json = JSON.parse(video9);
 
 $(function(){
-    //var subtitile = [];
-    $.get('video9.json', function(data){
-        $.parseJSON(data, function(data){
-            $.each(json, function(index, d){
-                var subtitle = "<p>" + d + "<\p>";
-                $(subtitle).appendTo('#subtitle');
-            });
-        });
+    $.each(json[0].transcripts, function(index, d){
+        var sub = "<a class='list-group-item' onclick='playAt(" + d.t + ")'>" + d.text + "</a>"
+        $(sub).appendTo('#subtitle');
     });
 });
 
