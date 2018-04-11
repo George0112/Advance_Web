@@ -1,61 +1,11 @@
 
 var obj = JSON.parse(videos);
 
-var videos=
-		[
-			{
-			"videoId": "9zumV39nm60",
-			"title": "Why selfies can make your nose look bigger",
-			"time": "1:56"
-			},
-			{
-			"videoId": "IprmiOa2zH8",
-			"title": "iPad — Homework (Full Version) — Apple",
-			"time": "2:20"
-			},
-			{
-			"videoId": "jKTZAsDVkzs",
-			"title": "What It Means To Be Pretty",
-			"time": "2:47"
-      },
-      {
-			"videoId": "9zumV39nm60",
-			"title": "Why selfies can make your nose look bigger",
-			"time": "1:56"
-			},
-			{
-			"videoId": "IprmiOa2zH8",
-			"title": "iPad — Homework (Full Version) — Apple",
-			"time": "2:20"
-			},
-			{
-			"videoId": "jKTZAsDVkzs",
-			"title": "What It Means To Be Pretty",
-			"time": "2:47"
-			},
-      {
-			"videoId": "9zumV39nm60",
-			"title": "Why selfies can make your nose look bigger",
-			"time": "1:56"
-			},
-			{
-			"videoId": "IprmiOa2zH8",
-			"title": "iPad — Homework (Full Version) — Apple",
-			"time": "2:20"
-			},
-			{
-			"videoId": "jKTZAsDVkzs",
-			"title": "What It Means To Be Pretty",
-			"time": "2:47"
-			}
-		];
-
-
 console.log(obj[0].videoId);
 
 var row = document.querySelector(".videospan");
 
-for(var i=0;i<obj.length;i++){
+for(var i=obj.length-1;i>=0;i--){
   var tag = document.createElement('div');
   tag.className = "col col-md-4 col-lg-3 frame";
   row.insertBefore(tag, row.childNodes[0]);
