@@ -68,13 +68,13 @@ for(var i=obj.length-1;i>=0;i--){
 //title-link
   var textlink = document.createElement('a');
   textlink.href = `./video.html?id=${obj[i].videoId}`;
+  textlink.className = "title";
   caption.insertBefore(textlink, caption.childNodes[0]);
 //title
   var title = document.createElement('h3');
   var stringtitle = obj[i].title;
   var titletext = document.createTextNode(stringtitle);
   title.appendChild(titletext);
-  title.className = "title";
   textlink.insertBefore(title, textlink.childNodes[0]);
 //title-tooltip
   var tooltip = document.createElement('span');
@@ -82,7 +82,8 @@ for(var i=obj.length-1;i>=0;i--){
   var tootiptext = document.createTextNode(stringtootip);
   tooltip.appendChild(tootiptext);
   tooltip.className = "tooltip";
-  title.insertBefore(tooltip, title.childNodes[0]);
+  caption.insertBefore(tooltip, caption.childNodes[0]);
+
 }
 var submit = document.querySelector(".index-input-btn");
 submit.addEventListener("click", function() {
