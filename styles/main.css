@@ -1,11 +1,30 @@
 body{
   font-size: 16px;
+  padding: 0;
+}
+.toppage{
+  height:640px;
+}
+.index-back{
+  width: auto;
+  background-image: url("https://cdn.voicetube.com/assets/img/banner02.jpg");
+  background-position-x: 37%;
+  height: 100%;
+}
+.index-describe{
+  font-size: 4rem;
+  color: white;
+  width: 100%;
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  text-shadow: 2px 2px #000000;
 }
 .row{
   margin:0 10%;
 }
 h3{
-  font-size:2rem;
+  font-size:1.5rem;
   display: -webkit-box;
 	overflow:hidden;
 	text-overflow : ellipsis;
@@ -22,5 +41,9 @@ h3{
 
 }
 .videospan{
-  
+  display:flex;
+  flex-wrap: wrap;
+}
+.thumbnail{
+  min-height: 300px;
 }
