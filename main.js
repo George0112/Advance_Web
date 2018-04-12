@@ -65,7 +65,7 @@ like.insertBefore(like_text,fill_heart.nextSibling);
 /////////////like//////////////////////////
 //img-link
   var imglink = document.createElement('a');
-  imglink.href = `./video.html?id=${obj[i].videoId}&index=${i}`;
+  imglink.href = `./video.html?id=${obj[i].videoId}&index=${i+1}`;
   thumbnail.insertBefore(imglink, thumbnail.childNodes[0]);
 
 //img
@@ -110,7 +110,7 @@ like.insertBefore(like_text,fill_heart.nextSibling);
   caption.insertBefore(content, caption.childNodes[0]);
 //title-link
   var textlink = document.createElement('a');
-  textlink.href = `./video.html?id=${obj[i].videoId}&index=${i}`;
+  textlink.href = `./video.html?id=${obj[i].videoId}&index=${i+1}`;
   textlink.className = "title";
   caption.insertBefore(textlink, caption.childNodes[0]);
 //title

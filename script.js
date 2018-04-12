@@ -49,7 +49,7 @@ function onYouTubeIframeAPIReady() {
         videoId: getUrlParameter('id'),
         events: {
             'onReady': onPlayerReady,
-            //'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange
         }
     });
 }
@@ -62,10 +62,13 @@ function onPlayerReady(event) {
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
-var done = false;
+var done = true;
+var duration = 0;
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
+        setTimeout(function(){
+			player.pauseVideo();
+		}, duration);
         done = true;
     }
 }
@@ -74,10 +77,13 @@ function stopVideo() {
 }
 
 function playAt(second, d) {
+	duration = d;
     player.seekTo(second, 1);
-    setTimeout(function(){
-        player.stopVideo();
-        console.log(d);
-    }, d)
+	done = false;
+	setTimeout(function(){
+		player.pauseVideo();
+		player.playVideo();
+		console.log('play');
+	}, 100);
     console.log("playAt()");
 }
