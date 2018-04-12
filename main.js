@@ -1,6 +1,6 @@
 
-var obj = JSON.parse(videos);
-
+//var obj = JSON.parse(videos);
+var obj = jQuery.parseJSON(JSON.stringify(videos));
 
 var row = document.querySelector(".videospan");
 var url=window.location.href;
@@ -76,20 +76,45 @@ like.insertBefore(like_text,fill_heart.nextSibling);
 //button
   var thumbnailtag = document.createElement('p');
   caption.insertBefore(thumbnailtag, caption.childNodes[0]);
+  if(obj[i].test != null){
+    var button0 = document.createElement('a');
+    button0.className = "btn btn-danger btn-tag";
+    var stringbutton0 = "測";
+    var buttontext0 = document.createTextNode(stringbutton0);
+    button0.appendChild(buttontext0);
+    thumbnailtag.insertBefore(button0, thumbnailtag.childNodes[0]);
+  }
+  if(obj[i].accent != null){
+    var button1 = document.createElement('a');
+    button1.className = "btn btn-warning btn-tag";
+    var stringbutton = obj[i].accent;
+    var buttontext1 = document.createTextNode(stringbutton);
+    button1.appendChild(buttontext1);
+    thumbnailtag.insertBefore(button1, thumbnailtag.childNodes[0]);
+  }
 
-  var button1 = document.createElement('a');
-  button1.className = "btn btn-warning btn-tag";
-  var stringbutton = "美國腔";
-  var buttontext1 = document.createTextNode(stringbutton);
-  button1.appendChild(buttontext1);
-  thumbnailtag.insertBefore(button1, thumbnailtag.childNodes[0]);
-
-  var button2 = document.createElement('a');
-  button2.className = "btn btn-success btn-tag";
-  var stringbutton2 = "中文";
-  var buttontext2 = document.createTextNode(stringbutton2);
-  button2.appendChild(buttontext2);
-  thumbnailtag.insertBefore(button2, thumbnailtag.childNodes[0]);
+  if(obj[i].subtitle != null){
+    var button2 = document.createElement('a');
+    button2.className = "btn btn-grey btn-tag";
+    var stringbutton2 = obj[i].subtitle;
+    var buttontext2 = document.createTextNode(stringbutton2);
+    button2.appendChild(buttontext2);
+    thumbnailtag.insertBefore(button2, thumbnailtag.childNodes[0]);
+  }
+  if(obj[i].level != null){
+    var button3 = document.createElement('a');
+    var stringbutton3 = obj[i].level;
+    if(stringbutton3 == "初級"){
+      button3.className = "btn btn-success btn-tag";
+    }else if(stringbutton3 == "中級"){
+      button3.className = "btn btn-primary btn-tag";
+    }else{
+      button3.className = "btn btn-black btn-tag";
+    }
+    var buttontext3 = document.createTextNode(stringbutton3);
+    button3.appendChild(buttontext3);
+    thumbnailtag.insertBefore(button3, thumbnailtag.childNodes[0]);
+  }
 // //like
 //   var like = document.createElement('a');
 //   like.className = "btn btn-default btn-like";
@@ -101,13 +126,7 @@ like.insertBefore(like_text,fill_heart.nextSibling);
 //   var likeicon = document.createElement('i');
 //   likeicon.className = "far fa-heart";
 //   like.insertBefore(likeicon, like.childNodes[0]);
-//time
-  var content = document.createElement('p');
-  content.className = "timedisplay";
-  var stringcontent = obj[i].time;
-  var contenttext = document.createTextNode(stringcontent);
-  content.appendChild(contenttext);
-  caption.insertBefore(content, caption.childNodes[0]);
+
 //title-link
   var textlink = document.createElement('a');
   textlink.href = `./video.html?id=${obj[i].videoId}&index=${i+1}`;

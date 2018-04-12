@@ -1,1 +1,57 @@
-videos = '[{ "videoId": "9zumV39nm60", "title": "Why selfies can make your nose look bigger", "time": "1:56" }, { "videoId": "IprmiOa2zH8", "title": "iPad — Homework (Full Version) — Apple", "time": "2:20" }, { "videoId": "jKTZAsDVkzs", "title": "What It Means To Be Pretty", "time": "2:47" }, { "videoId": "PKffm2uI4dk", "title": "憂鬱貓咪日記 Sad Cat Diary", "time": "3:20" }, { "videoId": "Hr3dX6__-hU", "title": "\\"Dear Basketball\\" - Kobe Bryant - Thanks for everything (Oscar Winner)", "time": "5:21" }, { "videoId": "EQy2Mq8Zhy4", "title": "English Conversation Topics - Asking About Job Vacancies", "time": "2:14" }, { "videoId": "stxQq0kI4pk", "title": "Benedict Cumberbatch Makes a Perfect Cup of Hot Tea // Omaze", "time": "1:42" }, { "videoId": "82PauSPa4lI", "title": "Top 6 Tips For Your Cover Letter", "time": "1:19" }, { "videoId": "OjEkotGQxzA", "title": "Proper British English on the Streets of London - B2 Listening", "time": "4:00" }]';
+videos =
+[
+  {
+   "videoId": "9zumV39nm60",
+   "title": "為什麼自拍照讓你的鼻子看起來變大？(Why selfies can make your nose look bigger)",
+   "time": "1:56",
+   "level": "初級", "subtitle": "中文", "accent":"美國腔", "test": true
+  },
+  {
+    "videoId": "IprmiOa2zH8",
+    "title": "Apple 創意廣告：新版 iPad 吐槽作業？看見學生的無限潛能(iPad — Homework (Full Version) — Apple)",
+    "time": "2:20",
+    "level": "初級", "subtitle": "中文", "accent":"美國腔", "test": false
+  },
+  {
+    "videoId": "jKTZAsDVkzs",
+    "title": "發人省思－美麗的定義是什麼？ (What It Means To Be Pretty)",
+    "time": "2:47",
+    "level": "初級", "subtitle": "中文", "accent":"美國腔", "test": true
+  },
+  {
+    "videoId": "PKffm2uI4dk",
+    "title": "憂鬱貓咪日記 Sad Cat Diary",
+    "time": "3:20",
+    "level": "中級", "subtitle": "中文", "accent":null, "test": true
+  },
+  {
+    "videoId": "Hr3dX6__-hU",
+    "title": "柯比·布萊恩對籃球的獨白 (Kobe Bryant's Dear Basketball Oscar Winner!!)",
+    "time": "5:21",
+    "level": "初級", "subtitle": "中文", "accent":"美國腔", "test": false
+  },
+  {
+    "videoId": "EQy2Mq8Zhy4",
+    "title": "【英文面試】如何用英文詢問有無職缺呢？ (English Conversation Topics - Asking About Job Vacancies)",
+    "time": "2:14",
+    "level": "初級", "subtitle": "中文", "accent":"澳洲腔", "test": true
+  },
+  {
+    "videoId": "stxQq0kI4pk",
+    "title": "班尼迪克·康柏拜區的超有戲泡茶指南 (Benedict Cumberbatch Makes a Perfect Cup of Hot Tea // Omaze)",
+    "time": "1:42",
+    "level": "初級", "subtitle": "中文", "accent":"英國腔", "test": false
+  },
+  {
+    "videoId": "82PauSPa4lI",
+    "title": "【英文履歷】求職季來了！六個撰寫求職信的小技巧報你知 (Top 6 Tips For Your Cover Letter)",
+    "time": "1:19",
+    "level": "初級", "subtitle": "中文", "accent":"英國腔", "test": true
+  },
+  {
+    "videoId": "OjEkotGQxzA",
+    "title": "倫敦街頭訪問--絕不會借別人的物品 (Proper British English on the Streets of London - B2 Listening)",
+    "time": "4:00",
+    "level": "初級", "subtitle": "中文", "accent":"英國腔", "test": true
+  }
+];
