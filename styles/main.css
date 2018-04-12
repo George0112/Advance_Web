@@ -5,6 +5,11 @@ body{
 .toppage{
   height:640px;
 }
+@media only screen and (max-width: 642px) {
+    .toppage {
+        display: none;
+    }
+}
 .index-back{
   width: auto;
   background-image: url("https://cdn.voicetube.com/assets/img/banner02.jpg");
