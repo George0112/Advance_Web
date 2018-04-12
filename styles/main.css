@@ -101,3 +101,60 @@ h3{
 #hidden{
   display: none;
 }
+.back_to_top {
+  opacity :0;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transition: opacity 0.5s;
+}
+.photo >img{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.video-time{
+  z-index: 9999;
+  background-color: #000;
+  opacity: 0.75;
+}
+.photo > .photolabel{
+  position: absolute;
+  bottom:3px;
+  right:-2px;
+  background-color: transparent;
+}
+.photo{
+  position: relative;
+}
+.likelabel{
+  position: absolute;
+  top:0;
+  left:0;
+  background-color: transparent;
+  display: none;
+}
+.like{
+  color: #d45f8e;
+  background-color: #f0eded;
+  border-radius: 6px;
+  width: 120%;
+  padding:3px;
+}
+/* .photo >img:hover + .like{
+  display: block;
+} */
+.photo:hover  .likelabel{
+  display: block;
+}
+.like:hover{
+  color:#d45f8e;
+  text-decoration: transparent;
+
+}
+.fill {
+  display: none;
+}

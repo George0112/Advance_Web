@@ -1,13 +1,36 @@
-var json = JSON.parse(video9);
+
 var url=window.location.href;
 console.log(url);
 
-$(function(){
+function add_subtitude(){
+    json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
-        var sub = "<a class='list-group-item' onclick='playAt(" + d.t + ")'>" + d.text + "</a>"
+        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )'>" + d.text + "</a>"
         $(sub).appendTo('#subtitle');
     });
-});
+};
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+// load json file
+var tag = document.createElement('script');
+
+tag.src = "video" + getUrlParameter('index') + ".json";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -23,7 +46,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '400',
         width: '100%',
-        videoId: '9zumV39nm60',
+        videoId: getUrlParameter('id'),
         events: {
             'onReady': onPlayerReady,
             //'onStateChange': onPlayerStateChange
@@ -50,7 +73,11 @@ function stopVideo() {
     player.stopVideo();
 }
 
-function playAt(second) {
+function playAt(second, d) {
     player.seekTo(second, 1);
+    setTimeout(function(){
+        player.stopVideo();
+        console.log(d);
+    }, d)
     console.log("playAt()");
 }
