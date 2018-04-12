@@ -9,6 +9,21 @@ $(function(){
     });
 });
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
@@ -23,7 +38,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '400',
         width: '100%',
-        videoId: 'EQy2Mq8Zhy4',
+        videoId: getUrlParameter('id'),
         events: {
             'onReady': onPlayerReady,
             //'onStateChange': onPlayerStateChange

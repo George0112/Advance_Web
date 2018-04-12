@@ -13,14 +13,24 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </head>
   <body>
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.12&appId=302426613527304&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
+      <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1702230423225363',
+              xfbml      : true,
+              version    : 'v2.12'
+            });
+            FB.AppEvents.logPageView();
+          };
+        
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid" id='navbar-spy'>
             <div class="navbar-header">
@@ -33,7 +43,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="myNavigiator">
-                <ul class="nav navbar-nav navbar-left">
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">partI <span class="caret"></span></a>
                       <ul class="dropdown-menu">
@@ -46,7 +56,6 @@
                     <li><a href='./video.html'>partII</a></li>
                     <li><a href='#partIII'>partIII</a></li>
                 </ul>
-
             </div>
         </div>
     </nav>
@@ -54,13 +63,21 @@
       <div class='row'>
           <div class='col col-md-6'>
               <div id='player'></div>
+              <div class='underSubtitle' id='underSubtitle'>
+              </div>
+              <div
+                class="fb-like"
+                data-share="true"
+                data-width="450"
+                data-show-faces="true">
+              </div>
           </div>
             <div class='col col-md-6'>
             <ol class='list-group control-time' id='subtitle'></ol>
           </div>
       </div>
     </div>
-    <div class="fb-comments" data-href="http://140.114.79.72" data-width="880" data-numposts="5"></div>
+    <div class="fb-comments" data-href="http://140.114.79.72?id=1" data-width="880" data-numposts="5"></div>
     <script src="video6.json" type="text/javascript"></script>
     <script src="video9.json" type="text/javascript"></script>
     <script src="script.js"></script>
@@ -96,6 +113,10 @@
     }
     .container{
       margin-top: 70px;
+    }
+    #underSubtitle{
+      background-color: black;
+      color: white;
     }
 
 </style>
