@@ -1,3 +1,13 @@
+var json = JSON.parse(video6);
+var url=window.location.href;
+console.log(url);
+
+$(function(){
+    $.each(json[0].transcripts, function(index, d){
+        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ")'>" + d.text + "</a>"
+        $(sub).appendTo('#subtitle');
+    });
+});
 
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -13,7 +23,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '400',
         width: '100%',
-        videoId: '9zumV39nm60',
+        videoId: 'EQy2Mq8Zhy4',
         events: {
             'onReady': onPlayerReady,
             //'onStateChange': onPlayerStateChange
