@@ -64,6 +64,7 @@ function onPlayerReady(event) {
 //    the player should play for six seconds and then stop.
 var done = true;
 var duration = 0;
+var changeState = false;
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
         setTimeout(function(){
@@ -71,6 +72,10 @@ function onPlayerStateChange(event) {
 		}, duration);
         done = true;
     }
+	if (event.data == YT.PlayerState.PLAYING){
+		changeState = true;
+		searchForSubtitle();
+	}
 }
 function stopVideo() {
     player.stopVideo();
@@ -84,6 +89,34 @@ function playAt(second, d) {
 		player.pauseVideo();
 		player.playVideo();
 		console.log('play');
-	}, 100);
+	}, 1);
     console.log("playAt()");
+}
+
+function searchForSubtitle(){
+	var currentTime = parseInt(player.getCurrentTime()*1000);
+	var minInterval = Number.MAX_VALUE;
+	var i = 0;
+	while (Math.abs(currentTime-json[0].transcripts[i].t) < minInterval){
+		minInterval = Math.abs(currentTime-json[0].transcripts[i].t);
+		i++;
+	}
+	i--;
+	$("#underSubtitles").text(json[0].transcripts[i].text);
+	if(player.getPlayerState()==1){
+		setTimeout(function(){
+			i++;
+			changeState = false;
+			changeSubtitle(i);
+		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
+	}
+}
+function changeSubtitle(i){
+	if(player.getPlayerState()==1 && changeState == false){
+		$("#underSubtitles").text(json[0].transcripts[i].text);
+		setTimeout(function(){
+			i++;
+			changeSubtitle(i);
+		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
+	}
 }
