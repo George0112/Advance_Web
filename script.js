@@ -65,12 +65,18 @@ function onPlayerReady(event) {
 var done = true;
 var duration = 0;
 var changeState = false;
+var currentSubtitleIndex = 0;
+var repeatOrNot = false;
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
         setTimeout(function(){
 			player.pauseVideo();
+			/*
+			if(repeatOrNot){
+				playAt(json[0].transcripts[currentSubtitleIndex].t, json[0].transcripts[currentSubtitleIndex].d);
+			}*/
 		}, duration);
-        done = true;
+        //done = true;
     }
 	if (event.data == YT.PlayerState.PLAYING){
 		changeState = true;
@@ -102,17 +108,20 @@ function searchForSubtitle(){
 		i++;
 	}
 	i--;
+	currentSubtitleIndex = i;
 	$("#underSubtitles").text(json[0].transcripts[i].text);
-	if(player.getPlayerState()==1){
+	if(player.getPlayerState()==1 && done){
 		setTimeout(function(){
 			i++;
 			changeState = false;
 			changeSubtitle(i);
 		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
 	}
+	done = true;
 }
 function changeSubtitle(i){
 	if(player.getPlayerState()==1 && changeState == false){
+		currentSubtitleIndex = i;
 		$("#underSubtitles").text(json[0].transcripts[i].text);
 		setTimeout(function(){
 			i++;
@@ -120,3 +129,15 @@ function changeSubtitle(i){
 		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
 	}
 }
+/*
+function repeat(){
+	//playAt(parseInt(json[0].transcripts[currentSubtitleIndex].t)/1000, json[0].transcripts[currentSubtitleIndex].d);
+	
+	if (!repeatOrNot){
+		repeatOrNot = true;
+		playAt(parseInt(json[0].transcripts[currentSubtitleIndex].t)/1000, json[0].transcripts[currentSubtitleIndex].d);
+	}
+	else{
+		repeatOrNot = false;
+	}
+}*/
