@@ -1,13 +1,14 @@
-var json = JSON.parse(video6);
+
 var url=window.location.href;
 console.log(url);
 
-$(function(){
+function add_subtitude(){
+    json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
         var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ")'>" + d.text + "</a>"
         $(sub).appendTo('#subtitle');
     });
-});
+};
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -23,6 +24,13 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
+
+// load json file
+var tag = document.createElement('script');
+
+tag.src = "video" + getUrlParameter('index') + ".json";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
