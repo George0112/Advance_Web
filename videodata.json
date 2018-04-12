@@ -55,3 +55,5 @@ videos =
     "level": "初級", "subtitle": "中文", "accent":"英國腔", "test": true
   }
 ];
+indexsrc = {"src":"https://cdn.voicetube.com/assets/img/banner02.jpg"};
+sidebarsrc = {"src":"https://cdn.voicetube.com/assets/thumbnails/UoLWYhwROBI.jpg"};

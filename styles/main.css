@@ -12,7 +12,7 @@ body{
 }
 .index-back{
   width: auto;
-  background-image: url("https://cdn.voicetube.com/assets/img/banner02.jpg");
+
   background-position-x: 37%;
   height: 100%;
 }
@@ -47,6 +47,10 @@ body{
   border: 0px;
   border-left: solid 1px black;
   height: 38px;
+}
+.videopart{
+  font-size: 28px;
+  margin: 30px 0 25px 0;
 }
 .row{
   margin:0 10%;

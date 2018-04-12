@@ -151,6 +151,22 @@ like.insertBefore(like_text,fill_heart.nextSibling);
 }
 
 window.onload = function() {
+  //index-background-img
+    var indeximgsrc = jQuery.parseJSON(JSON.stringify(indexsrc));
+    var indeximg = document.querySelector(".index-back");
+  //  var indeximgtag = document.createElement('div');
+  //  indeximgtag.className = "index-img";
+    console.log(indeximgsrc.src);
+    indeximg.style.backgroundImage  = 'url("' + indeximgsrc.src +'")';
+  //  indeximgtag.src = indeximgsrc.src;
+  //  indeximg.insertBefore(indeximgtag, indeximg.childNodes[0]);
+  //sidebar-background-img
+    var sideimgsrc = jQuery.parseJSON(JSON.stringify(sidebarsrc));
+    var sidebarimg = document.querySelector(".sidebar-img");
+    var sideimg = document.createElement('img');
+    sideimg.className = "side";
+    sideimg.src = sideimgsrc.src;
+    sidebarimg.insertBefore(sideimg, sidebarimg.childNodes[0]);
   /////////////like/////////////////////////
     for(var i=0;i<obj.length;i++){
       var selects = document.querySelector("#likeId"+i);
