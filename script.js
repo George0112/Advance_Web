@@ -5,7 +5,7 @@ console.log(url);
 function add_subtitude(){
     json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
-        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ")'>" + d.text + "</a>"
+        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )'>" + d.text + "</a>"
         $(sub).appendTo('#subtitle');
     });
 };
@@ -73,7 +73,11 @@ function stopVideo() {
     player.stopVideo();
 }
 
-function playAt(second) {
+function playAt(second, d) {
     player.seekTo(second, 1);
+    setTimeout(function(){
+        player.stopVideo();
+        console.log(d);
+    }, d)
     console.log("playAt()");
 }
