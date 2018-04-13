@@ -1,11 +1,11 @@
 
 var url=window.location.href;
-console.log(url);
 
 function add_subtitude(){
     json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
-        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )'>" + d.text + "</a>"
+        //var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )' id='subtitle" + index + "'>" + d.text + "</a>"
+		var sub = "<a class='list-group-item' onclick='playAt(" + index + " )' id='subtitle" + index + "'>" + d.text + "</a>"
         $(sub).appendTo('#subtitle');
     });
 };
@@ -65,79 +65,96 @@ function onPlayerReady(event) {
 var done = true;
 var duration = 0;
 var changeState = false;
-var currentSubtitleIndex = 0;
-var repeatOrNot = false;
+var interval;
+var repeatFlag = false;
+var firstRepeat = true;
+var currentSubtitle = 0;
 function onPlayerStateChange(event) {
+    console.log(event.data);
     if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(function(){
+		doneTimeOut = setTimeout(function(){
 			player.pauseVideo();
-			/*
-			if(repeatOrNot){
-				playAt(json[0].transcripts[currentSubtitleIndex].t, json[0].transcripts[currentSubtitleIndex].d);
-			}*/
 		}, duration);
-        //done = true;
-    }
-	if (event.data == YT.PlayerState.PLAYING){
+        done = true;
+        console.log('stateChange and not done, duration = ' + duration);
+    }else if (event.data == YT.PlayerState.PLAYING){
 		changeState = true;
-		searchForSubtitle();
-	}
+		renderSubtitle();
+    }else if(event.data == YT.PlayerState.PAUSED && repeatFlag){
+        console.log('repeat')
+        repeat();
+    }
 }
+
 function stopVideo() {
     player.stopVideo();
 }
 
-function playAt(second, d) {
-	duration = d;
+function playAt(index) {
+	if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
+	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
+	if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
+	$("#underSubtitles").text(json[0].transcripts[index].text);
+	currentSubtitle = index;
+	second = parseInt(json[0].transcripts[index].t)/1000;
+	d = json[0].transcripts[index].d;
+	duration = d-1;
     player.seekTo(second, 1);
 	done = false;
-	setTimeout(function(){
-		player.pauseVideo();
-		player.playVideo();
-		console.log('play');
-	}, 1);
+    player.playVideo();
     console.log("playAt()");
+    console.log(second + " " + d);
 }
 
 function searchForSubtitle(){
 	var currentTime = parseInt(player.getCurrentTime()*1000);
 	var minInterval = Number.MAX_VALUE;
 	var i = 0;
-	while (Math.abs(currentTime-json[0].transcripts[i].t) < minInterval){
-		minInterval = Math.abs(currentTime-json[0].transcripts[i].t);
+	while (currentTime-json[0].transcripts[i].t >= 0){
 		i++;
 	}
 	i--;
-	currentSubtitleIndex = i;
+	if(i==-1)i=0;
 	$("#underSubtitles").text(json[0].transcripts[i].text);
-	if(player.getPlayerState()==1 && done){
-		setTimeout(function(){
-			i++;
+    currentSubtitle = i;
+}
+
+function renderSubtitle(){
+    //var i = searchForSubtitle();
+	searchForSubtitle();
+	if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
+	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
+	if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
+    //$("#underSubtitles").text(json[0].transcripts[i].text);
+	if(player.getPlayerState()==1){
+		renderTimeOut = setTimeout(function(){
+			currentSubtitle++;
 			changeState = false;
-			changeSubtitle(i);
-		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
+			changeSubtitle();
+		}, json[0].transcripts[currentSubtitle+1].t-parseInt(player.getCurrentTime()*1000));
 	}
-	done = true;
 }
-function changeSubtitle(i){
+
+function changeSubtitle(){
 	if(player.getPlayerState()==1 && changeState == false){
-		currentSubtitleIndex = i;
-		$("#underSubtitles").text(json[0].transcripts[i].text);
-		setTimeout(function(){
-			i++;
-			changeSubtitle(i);
-		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
+		$("#underSubtitles").text(json[0].transcripts[currentSubtitle].text);
+		changeTimeOut = setTimeout(function(){
+			currentSubtitle++;
+			changeSubtitle();
+		}, json[0].transcripts[currentSubtitle+1].t-parseInt(player.getCurrentTime()*1000));
 	}
 }
-/*
+
 function repeat(){
-	//playAt(parseInt(json[0].transcripts[currentSubtitleIndex].t)/1000, json[0].transcripts[currentSubtitleIndex].d);
-	
-	if (!repeatOrNot){
-		repeatOrNot = true;
-		playAt(parseInt(json[0].transcripts[currentSubtitleIndex].t)/1000, json[0].transcripts[currentSubtitleIndex].d);
-	}
-	else{
-		repeatOrNot = false;
-	}
-}*/
+    if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
+	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
+	if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
+    done = true;
+	playAt(currentSubtitle);
+	repeatFlag = true;
+}
+
+function stopRepeat(){
+    //player.pauseVideo();
+    repeatFlag = false;
+}
