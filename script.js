@@ -4,7 +4,6 @@ var url=window.location.href;
 function add_subtitude(){
     json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
-        //var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )' id='subtitle" + index + "'>" + d.text + "</a>"
 		var sub = "<a class='list-group-item' onclick='playAt(" + index + " )' id='subtitle" + index + "'>" + d.text + "</a>"
         $(sub).appendTo('#subtitle');
     });
@@ -125,13 +124,13 @@ function searchForSubtitle(){
         $(this).css("background-color", "white");
     });
     $('#subtitle'+i).css("background-color", "#bfbfbf");
-    //$body.animate({
-    //var position = $("#subtitle" + i).position().top;
-    //document.getElementById("subtitle" + i).scrollIntoView(true);
-    //$('#subtitle').scrollTop($('#subtitle' + i).offset().top);
-    //}, 2000, 'easeOutBounce');
     currentSubtitle = i;
+    var top = $('#subtitle' + currentSubtitle).position().top-15;
+    $('#subtitle').animate({
+        scrollTop: '+=' + top
+    }, 500)
 }
+
 
 function renderSubtitle(){
     //var i = searchForSubtitle();
@@ -155,7 +154,11 @@ function changeSubtitle(){
 		$(".list-group-item").each(function(){
 			$(this).css("background-color", "white");
 		});
-		$('#subtitle'+currentSubtitle).css("background-color", "#bfbfbf");
+        $('#subtitle'+currentSubtitle).css("background-color", "#bfbfbf");
+        var top = $('#subtitle' + currentSubtitle).position().top-15;
+        $('#subtitle').animate({
+            scrollTop: '+=' + top
+        }, 500)
         //document.getElementById("subtitle" + currentSubtitle).scrollIntoView(true);
 		changeTimeOut = setTimeout(function(){
 			currentSubtitle++;
