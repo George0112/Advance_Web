@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="140.114.79.72">Videos</a>
+                <a class="navbar-brand" href="http://140.114.79.72">Videos</a>
             </div>
 
             <div class="collapse navbar-collapse" id="myNavigiator">
@@ -69,7 +69,7 @@
             <div id='underSubtitles'></div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" data-toggle="toggle" id="repeatToggle">Repeat
+                <span id='repeatText'>Repeat</span><input type="checkbox" data-toggle="toggle" id="repeatToggle">
               </label>
             </div>
             <div
@@ -121,15 +121,18 @@
       margin-top: 70px;
     }
     #below{
+      /*position: relative;*/
       background-color: black;
       color: white;
       padding-bottom: 10px;
     }
     #playScreen{
       background-color: black;
+      position: relative;
     }
     #underSubtitles{
       align-content: center;
+      min-height:10px;
     }
 
     #underSubtitle{
@@ -143,6 +146,14 @@
 
     .checkbox{
       display: inline;
+      position: absolute;
+      right: 10px;
+      bottom: -3px;
+    }
+
+    #repeatText{
+      margin-right: 40px;
+      font-size: 20px;
     }
 
 </style>
