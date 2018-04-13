@@ -1,11 +1,10 @@
 
 var url=window.location.href;
-console.log(url);
 
 function add_subtitude(){
     json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
-        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )'>" + d.text + "</a>"
+        var sub = "<a class='list-group-item' onclick='playAt(" + parseInt(d.t)/1000 + ", " + d.d + " )' id='subtitle" + index + "'>" + d.text + "</a>"
         $(sub).appendTo('#subtitle');
     });
 };
@@ -65,18 +64,28 @@ function onPlayerReady(event) {
 var done = true;
 var duration = 0;
 var changeState = false;
+var interval;
+var repeatFlag = false;
+var firstRepeat = true;
 function onPlayerStateChange(event) {
+    console.log(event.data);
     if (event.data == YT.PlayerState.PLAYING && !done) {
         setTimeout(function(){
 			player.pauseVideo();
 		}, duration);
         done = true;
+        console.log('stateChange and not done, duration = ' + duration);
     }
-	if (event.data == YT.PlayerState.PLAYING){
+	else if (event.data == YT.PlayerState.PLAYING){
 		changeState = true;
-		searchForSubtitle();
-	}
+		renderSubtitle();
+    }else if(event.data == YT.PlayerState.PAUSED && repeatFlag){
+        console.log('repeat')
+        repeat();
+    }
+    
 }
+
 function stopVideo() {
     player.stopVideo();
 }
@@ -85,12 +94,9 @@ function playAt(second, d) {
 	duration = d;
     player.seekTo(second, 1);
 	done = false;
-	setTimeout(function(){
-		player.pauseVideo();
-		player.playVideo();
-		console.log('play');
-	}, 1);
+    player.playVideo();
     console.log("playAt()");
+    console.log(second + " " + d);
 }
 
 function searchForSubtitle(){
@@ -98,11 +104,16 @@ function searchForSubtitle(){
 	var minInterval = Number.MAX_VALUE;
 	var i = 0;
 	while (Math.abs(currentTime-json[0].transcripts[i].t) < minInterval){
-		minInterval = Math.abs(currentTime-json[0].transcripts[i].t);
+        minInterval = Math.abs(currentTime-json[0].transcripts[i].t);
 		i++;
 	}
-	i--;
-	$("#underSubtitles").text(json[0].transcripts[i].text);
+    i--;
+    return i;
+}
+
+function renderSubtitle(){
+    var i = searchForSubtitle();
+    $("#underSubtitles").text(json[0].transcripts[i].text);
 	if(player.getPlayerState()==1){
 		setTimeout(function(){
 			i++;
@@ -111,6 +122,7 @@ function searchForSubtitle(){
 		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
 	}
 }
+
 function changeSubtitle(i){
 	if(player.getPlayerState()==1 && changeState == false){
 		$("#underSubtitles").text(json[0].transcripts[i].text);
@@ -119,4 +131,22 @@ function changeSubtitle(i){
 			changeSubtitle(i);
 		}, json[0].transcripts[i+1].t-parseInt(player.getCurrentTime()*1000));
 	}
+}
+
+function repeat(){
+    if(!YT.PlayerState.PLAYING) return;
+    var i = searchForSubtitle();
+    if(!firstRepeat) i--;
+    firstRepeat = false;
+    var id = "subtitle" + i;
+    console.log(i);
+    playAt(parseInt(json[0].transcripts[i].t)/1000, parseInt(json[0].transcripts[i].d));
+    console.log(id);
+    console.log(json[0].transcripts[i].d-20);
+    repeatFlag = true;
+}
+
+function stopRepeat(){
+    player.stopVideo();
+    repeatFlag = false;
 }
