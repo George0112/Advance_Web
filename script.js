@@ -70,7 +70,7 @@ var firstRepeat = true;
 function onPlayerStateChange(event) {
     console.log(event.data);
     if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(function(){
+        doneTimeOut = setTimeout(function(){
 			player.pauseVideo();
 		}, duration);
         done = true;
@@ -134,6 +134,8 @@ function changeSubtitle(i){
 }
 
 function repeat(){
+    clearTimeout(doneTimeOut);
+    done = true;
     if(!YT.PlayerState.PLAYING) return;
     var i = searchForSubtitle();
     if(!firstRepeat) i--;
