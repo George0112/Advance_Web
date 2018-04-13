@@ -1,6 +1,6 @@
 
-var obj = JSON.parse(videos);
-
+//var obj = JSON.parse(videos);
+var obj = jQuery.parseJSON(JSON.stringify(videos));
 
 var row = document.querySelector(".videospan");
 var url=window.location.href;
@@ -20,7 +20,7 @@ for(var i=obj.length-1;i>=0;i--){
   var caption = document.createElement('div');
   caption.className = "caption";
   thumbnail.insertBefore(caption, thumbnail.childNodes[0]);
-  
+
 
   var photo=document.createElement('div');
   photo.className = "photo";
@@ -40,7 +40,7 @@ for(var i=obj.length-1;i>=0;i--){
   videoTime.innerHTML = obj[i].time.length>4?obj[i].time:"0"+obj[i].time;
   timelable.insertBefore(videoTime, timelable.childNodes[0]);
 ////////////////////////time label////////////////////////////
-////////////like///////////////////////////////////////////// 
+////////////like/////////////////////////////////////////////
 var likelable=document.createElement('span');
   likelable.className="label likelabel label-inverse";
   photo.insertBefore(likelable, img.nextSibling);
@@ -76,20 +76,45 @@ like.insertBefore(like_text,fill_heart.nextSibling);
 //button
   var thumbnailtag = document.createElement('p');
   caption.insertBefore(thumbnailtag, caption.childNodes[0]);
+  if(obj[i].test != null){
+    var button0 = document.createElement('a');
+    button0.className = "btn btn-danger btn-tag";
+    var stringbutton0 = "測";
+    var buttontext0 = document.createTextNode(stringbutton0);
+    button0.appendChild(buttontext0);
+    thumbnailtag.insertBefore(button0, thumbnailtag.childNodes[0]);
+  }
+  if(obj[i].accent != null){
+    var button1 = document.createElement('a');
+    button1.className = "btn btn-warning btn-tag";
+    var stringbutton = obj[i].accent;
+    var buttontext1 = document.createTextNode(stringbutton);
+    button1.appendChild(buttontext1);
+    thumbnailtag.insertBefore(button1, thumbnailtag.childNodes[0]);
+  }
 
-  var button1 = document.createElement('a');
-  button1.className = "btn btn-warning btn-tag";
-  var stringbutton = "美國腔";
-  var buttontext1 = document.createTextNode(stringbutton);
-  button1.appendChild(buttontext1);
-  thumbnailtag.insertBefore(button1, thumbnailtag.childNodes[0]);
-
-  var button2 = document.createElement('a');
-  button2.className = "btn btn-success btn-tag";
-  var stringbutton2 = "中文";
-  var buttontext2 = document.createTextNode(stringbutton2);
-  button2.appendChild(buttontext2);
-  thumbnailtag.insertBefore(button2, thumbnailtag.childNodes[0]);
+  if(obj[i].subtitle != null){
+    var button2 = document.createElement('a');
+    button2.className = "btn btn-grey btn-tag";
+    var stringbutton2 = obj[i].subtitle;
+    var buttontext2 = document.createTextNode(stringbutton2);
+    button2.appendChild(buttontext2);
+    thumbnailtag.insertBefore(button2, thumbnailtag.childNodes[0]);
+  }
+  if(obj[i].level != null){
+    var button3 = document.createElement('a');
+    var stringbutton3 = obj[i].level;
+    if(stringbutton3 == "初級"){
+      button3.className = "btn btn-success btn-tag";
+    }else if(stringbutton3 == "中級"){
+      button3.className = "btn btn-primary btn-tag";
+    }else{
+      button3.className = "btn btn-black btn-tag";
+    }
+    var buttontext3 = document.createTextNode(stringbutton3);
+    button3.appendChild(buttontext3);
+    thumbnailtag.insertBefore(button3, thumbnailtag.childNodes[0]);
+  }
 // //like
 //   var like = document.createElement('a');
 //   like.className = "btn btn-default btn-like";
@@ -101,13 +126,7 @@ like.insertBefore(like_text,fill_heart.nextSibling);
 //   var likeicon = document.createElement('i');
 //   likeicon.className = "far fa-heart";
 //   like.insertBefore(likeicon, like.childNodes[0]);
-//time
-  var content = document.createElement('p');
-  content.className = "timedisplay";
-  var stringcontent = obj[i].time;
-  var contenttext = document.createTextNode(stringcontent);
-  content.appendChild(contenttext);
-  caption.insertBefore(content, caption.childNodes[0]);
+
 //title-link
   var textlink = document.createElement('a');
   textlink.href = `./video.html?id=${obj[i].videoId}&index=${i+1}`;
@@ -118,18 +137,36 @@ like.insertBefore(like_text,fill_heart.nextSibling);
   var stringtitle = obj[i].title;
   var titletext = document.createTextNode(stringtitle);
   title.appendChild(titletext);
+  title.className = "title";
   textlink.insertBefore(title, textlink.childNodes[0]);
 //title-tooltip
-  var tooltip = document.createElement('span');
+/*
+  var tooltip = document.createElement('p');
+  tooltip.className = "tooltips";
   var stringtootip = obj[i].title;
   var tootiptext = document.createTextNode(stringtootip);
   tooltip.appendChild(tootiptext);
-  tooltip.className = "tooltip";
-  caption.insertBefore(tooltip, caption.childNodes[0]);
-
+  title.insertBefore(tooltip, title.childNodes[0]);
+*/
 }
 
 window.onload = function() {
+  //index-background-img
+    var indeximgsrc = jQuery.parseJSON(JSON.stringify(indexsrc));
+    var indeximg = document.querySelector(".index-back");
+  //  var indeximgtag = document.createElement('div');
+  //  indeximgtag.className = "index-img";
+    console.log(indeximgsrc.src);
+    indeximg.style.backgroundImage  = 'url("' + indeximgsrc.src +'")';
+  //  indeximgtag.src = indeximgsrc.src;
+  //  indeximg.insertBefore(indeximgtag, indeximg.childNodes[0]);
+  //sidebar-background-img
+    var sideimgsrc = jQuery.parseJSON(JSON.stringify(sidebarsrc));
+    var sidebarimg = document.querySelector(".sidebar-img");
+    var sideimg = document.createElement('img');
+    sideimg.className = "side";
+    sideimg.src = sideimgsrc.src;
+    sidebarimg.insertBefore(sideimg, sidebarimg.childNodes[0]);
   /////////////like/////////////////////////
     for(var i=0;i<obj.length;i++){
       var selects = document.querySelector("#likeId"+i);
@@ -147,12 +184,12 @@ window.onload = function() {
   ////////////////////////////////////
 ///////////////back_to_top/////////////////////////////////////////////
 
-    
+
     var obtn = document.getElementById('back_to_top');
     var timer = null;
     var isTop = true;
     var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-  
+
     window.onscroll = function(){
         var osTop = document.documentElement.scrollTop || document.body.scrollTop;
         if (osTop >= clientHeight) {
@@ -162,19 +199,19 @@ window.onload = function() {
                 // obtn.style.display = 'none';
                 obtn.style.opacity = 0;
             }
-        
+
         if (!isTop) {
               clearInterval(timer);
         }
         isTop = false;
     };
-    
+
     obtn.onclick = function(){
         timer = setInterval(function(){
-            var osTop = document.documentElement.scrollTop || document.body.scrollTop; 
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
             var isSpeed = Math.floor(-osTop / 7);
             document.documentElement.scrollTop = document.body.scrollTop = osTop + isSpeed;
-                        
+
 
             isTop = true;
             if (osTop == 0) {
@@ -182,7 +219,7 @@ window.onload = function() {
             }
         },30);
     };
-   
+
 ///////////////back_to_top/////////////////////////////////////////////
 }
 var submit = document.querySelector(".index-input-btn");

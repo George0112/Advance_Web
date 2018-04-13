@@ -5,9 +5,14 @@ body{
 .toppage{
   height:640px;
 }
+@media only screen and (max-width: 642px) {
+    .toppage {
+        display: none;
+    }
+}
 .index-back{
   width: auto;
-  background-image: url("https://cdn.voicetube.com/assets/img/banner02.jpg");
+
   background-position-x: 37%;
   height: 100%;
 }
@@ -42,6 +47,10 @@ body{
   border: 0px;
   border-left: solid 1px black;
   height: 38px;
+}
+.videopart{
+  font-size: 28px;
+  margin: 30px 0 25px 0;
 }
 .row{
   margin:0 10%;
@@ -80,8 +89,7 @@ h3{
   margin-right: 0.5rem;
   font-size: 11.84px;
   font-weight: 700;
-  width: 45px;
-  height: 16px;
+  height: 20px;
 }
 .btn-like{
   background-color: rgb(153,153,153);
@@ -95,29 +103,9 @@ h3{
   display: inline;
 }
 .title{
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-.tooltip{
-    display: none;
-    width: 120px;
-    background-color: black;
-    color: #f00;
-    font-size: 15px;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
 
-    /* Position the tooltip */
-
-    z-index: 1;
 }
 
-.title:hover .tooltip{
-  display: inline-block;
-  position: absolute;
-}
 #hidden{
   display: none;
 }
@@ -177,4 +165,12 @@ h3{
 }
 .fill {
   display: none;
+}
+.btn-grey{
+  background-color: #999;
+  color: white;
+}
+.btn-black{
+  background-color: black;
+  color: white;
 }
