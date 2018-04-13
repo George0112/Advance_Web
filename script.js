@@ -95,6 +95,10 @@ function playAt(index) {
 	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
 	if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
 	$("#underSubtitles").text(json[0].transcripts[index].text);
+	$(".list-group-item").each(function(){
+        $(this).css("background-color", "white");
+    });
+	$('#subtitle'+index).css("background-color", "#bfbfbf");
 	currentSubtitle = index;
 	second = parseInt(json[0].transcripts[index].t)/1000;
 	d = json[0].transcripts[index].d;
@@ -116,6 +120,10 @@ function searchForSubtitle(){
 	i--;
 	if(i==-1)i=0;
 	$("#underSubtitles").text(json[0].transcripts[i].text);
+	$(".list-group-item").each(function(){
+        $(this).css("background-color", "white");
+    });
+	$('#subtitle'+i).css("background-color", "#bfbfbf");
     currentSubtitle = i;
 }
 
@@ -138,6 +146,10 @@ function renderSubtitle(){
 function changeSubtitle(){
 	if(player.getPlayerState()==1 && changeState == false){
 		$("#underSubtitles").text(json[0].transcripts[currentSubtitle].text);
+		$(".list-group-item").each(function(){
+			$(this).css("background-color", "white");
+		});
+		$('#subtitle'+currentSubtitle).css("background-color", "#bfbfbf");
 		changeTimeOut = setTimeout(function(){
 			currentSubtitle++;
 			changeSubtitle();
