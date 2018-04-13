@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </head>
   <body>
       <script>
@@ -65,9 +67,12 @@
           <div id='player'></div>
           <div class='below' id='below'>
             <div id='underSubtitles'></div>
-            <button type="button" class="btn btn-danger" onClick="repeat()">Repeat</button>
-            <button type="button" class="btn btn-primary" onClick="stopRepeat()">stopRepeat</button>
-            <div
+            <div class="checkbox">
+              <label>
+                <p>Repeat</p>
+                <input type="checkbox" data-toggle="toggle" id="repeatToggle">
+              </label>
+            </div><div
               class="fb-like"
               data-share="true"
               data-width="450"
@@ -104,10 +109,10 @@
     }
     .scroll-text{
         height: 400px;
-        overflow: 'scroll';
+        overflow: scroll;
     }
     .control-time{
-        overflow: 'scroll';
+        overflow: scroll;
         padding: 20px;
         margin-top: 20px;
         max-height: 440px;
@@ -123,6 +128,12 @@
       background-color: black;
     }
     #underSubtitles{
-      min-height: 78px;
+      align-content: center;
     }
+
+    #underSubtitle{
+      text-align: center;
+      font-size: 20px;
+    }
+
 </style>

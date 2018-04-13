@@ -93,8 +93,9 @@ function stopVideo() {
 function playAt(index) {
 	if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
 	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
-	if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
-	$("#underSubtitles").text(json[0].transcripts[index].text);
+    if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
+    console.log('playAt render')
+	$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[index].text + "</p>");
 	$(".list-group-item").each(function(){
         $(this).css("background-color", "white");
     });
@@ -119,11 +120,16 @@ function searchForSubtitle(){
 	}
 	i--;
 	if(i==-1)i=0;
-	$("#underSubtitles").text(json[0].transcripts[i].text);
+	$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[i].text + "</p>");
 	$(".list-group-item").each(function(){
         $(this).css("background-color", "white");
     });
-	$('#subtitle'+i).css("background-color", "#bfbfbf");
+    $('#subtitle'+i).css("background-color", "#bfbfbf");
+    //$body.animate({
+    //var position = $("#subtitle" + i).position().top;
+    //document.getElementById("subtitle" + i).scrollIntoView(true);
+    //$('#subtitle').scrollTop($('#subtitle' + i).offset().top);
+    //}, 2000, 'easeOutBounce');
     currentSubtitle = i;
 }
 
@@ -145,17 +151,25 @@ function renderSubtitle(){
 
 function changeSubtitle(){
 	if(player.getPlayerState()==1 && changeState == false){
-		$("#underSubtitles").text(json[0].transcripts[currentSubtitle].text);
+		$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[currentSubtitle].text + "</p>");
 		$(".list-group-item").each(function(){
 			$(this).css("background-color", "white");
 		});
 		$('#subtitle'+currentSubtitle).css("background-color", "#bfbfbf");
+        //document.getElementById("subtitle" + currentSubtitle).scrollIntoView(true);
 		changeTimeOut = setTimeout(function(){
 			currentSubtitle++;
 			changeSubtitle();
 		}, json[0].transcripts[currentSubtitle+1].t-parseInt(player.getCurrentTime()*1000));
 	}
 }
+
+$(function() {
+    $('#repeatToggle').change(function() {
+        if($(this).prop('checked')) repeat();
+        else stopRepeat();
+    })
+  })
 
 function repeat(){
     if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
