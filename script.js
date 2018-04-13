@@ -134,7 +134,7 @@ function changeSubtitle(i){
 }
 
 function repeat(){
-    clearTimeout(doneTimeOut);
+    if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
     done = true;
     if(!YT.PlayerState.PLAYING) return;
     var i = searchForSubtitle();
