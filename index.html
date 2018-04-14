@@ -13,34 +13,39 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Do Hyeon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gugi">
   </head>
   <body data-target="#navbar-spy" data-spy="scroll">
 
     <!--  navbar  -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid" id='navbar-spy'>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id='navb'>
+        <div class="container-fluid vMiddle" id='navbar-spy'>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavigiator" aria-expanded="false">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://140.114.79.72">Videos</a>
+                <a class="navbar-brand" href="http://140.114.79.72">
+                    <i class="fas fa-video"></i>
+                    Videos
+                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="myNavigiator">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <li class="part">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">partI <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">item1</a></li>
-                        <li><a href="#">item2</a></li>
-                        <li><a href="#">item3</a></li>
-                        <li><a href="#">item4</a></li>
+                        <li class="part"><a href="#">item1</a></li>
+                        <li class="part"><a href="#">item2</a></li>
+                        <li class="part"><a href="#">item3</a></li>
+                        <li class="part"><a href="#">item4</a></li>
                       </ul>
                     </li>
-                    <li><a href='./video.html'>partII</a></li>
-                    <li><a href='#partIII'>partIII</a></li>
+                    <li class="part"><a href='./video.html'>partII</a></li>
+                    <li class="part"><a href='#partIII'>partIII</a></li>
                 </ul>
 
             </div>
@@ -60,7 +65,7 @@
     </div>
 
     <!--Thumbnail-->
-    
+
     <div class = "row">
       <h1 class = "videopart">New Videos</h1>
       <div class = "col col-md-9">

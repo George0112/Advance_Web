@@ -9,6 +9,10 @@ body{
     .toppage {
         display: none;
     }
+    .row{
+      margin-top: 100px !important;
+    }
+
 }
 .index-back{
   width: auto;
@@ -173,4 +177,58 @@ h3{
 .btn-black{
   background-color: black;
   color: white;
+}
+.navbar{
+  height:100px;
+  line-height:50px;
+}
+
+.vMiddle{
+ margin-top: 12px;
+ font-size: 20px;
+}
+.navbar-brand{
+  font-size: 42px;
+  font-family: 'Do Hyeon', serif;
+  color: snow !important;
+}
+li{
+  font-family: 'Gugi', serif;
+
+}
+.navbar-right{
+  padding-top: 13px;
+}
+.navbar{
+  background:black;
+  box-shadow: 0 0px 0px rgba(0,0,0,0) !important;
+
+}
+.part{
+  background:rgba(0,0,0,0.7);
+  box-shadow: 0 0px 0px rgba(0,0,0,0) !important;
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: snow !important;
+}
+.open{
+  background-color: transparent !important;
+}
+@media only screen and (min-width: 642px) {
+  .navbar{
+      background:transparent;
+  }
+  .part{
+    background:transparent;
+  }
+}
+
+.navbar-collapse{
+  border-color: transparent !important;
+}
+.dropdown-menu{
+  padding: 0;
+}
+.icon-bar{
+  background-color: white !important;
 }
