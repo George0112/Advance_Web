@@ -31,22 +31,24 @@
                     Videos
                 </a>
             </div>
-
-            <div class="collapse navbar-collapse" id="myNavigiator">
+              <div class="collapse navbar-collapse" id="myNavigiator">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">partI <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">item1</a></li>
-                        <li><a href="#">item2</a></li>
-                        <li><a href="#">item3</a></li>
-                        <li><a href="#">item4</a></li>
-                      </ul>
-                    </li>
-                    <li><a href='./video.html'>partII</a></li>
-                    <li><a href='#partIII'>partIII</a></li>
+                  <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">partI <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">item1</a></li>
+                      <li><a href="#">item2</a></li>
+                      <li><a href="#">item3</a></li>
+                      <li><a href="#">item4</a></li>
+                    </ul>
+                  </li>
+                  <li><a href='./video.html'>partII</a></li>
+                  <li><a href='#partIII'>partIII</a></li>
+                  <li class="part-icon"><i class="fas fa-user"></i></li>
+                  <li class="part-icon"><i class="fas fa-flag"></i></i></li>
+                  <li class="part-icon"><i class="fas fa-envelope"></i></li>
+                  <li class="part-icon">  <i class="fas fa-check-square"></i></li>
                 </ul>
-
             </div>
         </div>
     </nav>
@@ -108,9 +110,20 @@
     }
     .control-time{
         overflow: scroll;
+<<<<<<< HEAD
         padding: 20px;
+=======
+        padding: 0 20px 20px 20px;
+>>>>>>> fe397220793f34d203cc07d645f7523c2e4f5b87
         margin-top: 0px;
         max-height: 440px;
+    }
+    @media only screen and (max-width: 992px) {
+      .control-time{
+        padding:20px;
+        margin-top: 20px;
+      }
+
     }
     .container{
       margin-top: 70px;
@@ -188,7 +201,19 @@
     .navbar-collapse{
       border-color: transparent !important;
     }
-
+    .part-icon{
+      display: none;
+      visibility: hidden;
+      position: absolute !important;
+    }
+    @media only screen and (min-width: 762px) {
+      .part-icon{
+        position: static !important;
+        visibility:visible;
+        color: white;
+        margin: 12px 10px;
+      }
+    }
     body{
       background-color:#222;
     }

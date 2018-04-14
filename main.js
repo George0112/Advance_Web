@@ -154,19 +154,43 @@ window.onload = function() {
   //index-background-img
     var indeximgsrc = jQuery.parseJSON(JSON.stringify(indexsrc));
     var indeximg = document.querySelector(".index-back");
-  //  var indeximgtag = document.createElement('div');
-  //  indeximgtag.className = "index-img";
+
     console.log(indeximgsrc.src);
     indeximg.style.backgroundImage  = 'url("' + indeximgsrc.src +'")';
-  //  indeximgtag.src = indeximgsrc.src;
-  //  indeximg.insertBefore(indeximgtag, indeximg.childNodes[0]);
+//////////////////sidebar//////////////////////////////////////
+    var sidesrc = jQuery.parseJSON(JSON.stringify(sidebarsrc));
+    var sidebar = document.querySelector(".sidebar");
+    console.log(sidesrc.newest.length);
+  //sidebar newest
+
+    for(var i = 0;i < sidesrc.newest.length;i++){
+      var newitems = document.createElement('div');
+      sidebar.insertBefore(newitems, sidebar.childNodes[0]);
+
+      var itemowner = document.createElement('div');
+      itemowner.className = "itemowner";
+      var newowner = document.createTextNode(sidesrc.newest[i].owner + "提供");
+      itemowner.appendChild(newowner);
+      newitems.insertBefore(itemowner, newitems.childNodes[0]);
+
+      var itemtitle = document.createElement('div');
+      itemtitle.className = "itemtitle";
+      var newtitle = document.createTextNode(sidesrc.newest[i].title);
+      itemtitle.appendChild(newtitle);
+      newitems.insertBefore(itemtitle, newitems.childNodes[0]);
+
+    }
+    var sidenew = document.createElement('h1');
+    sidenew.className = "sidetitle";
+    sidebar.insertBefore(sidenew, sidebar.childNodes[0]);
+    var sidenewtitle = document.createTextNode("最新學習課程");
+    sidenew.appendChild(sidenewtitle);
   //sidebar-background-img
-    var sideimgsrc = jQuery.parseJSON(JSON.stringify(sidebarsrc));
-    var sidebarimg = document.querySelector(".sidebar-img");
     var sideimg = document.createElement('img');
     sideimg.className = "side";
-    sideimg.src = sideimgsrc.src;
-    sidebarimg.insertBefore(sideimg, sidebarimg.childNodes[0]);
+    sideimg.src = sidesrc.src;
+    sidebar.insertBefore(sideimg, sidebar.childNodes[0]);
+
   /////////////like/////////////////////////
     for(var i=0;i<obj.length;i++){
       var selects = document.querySelector("#likeId"+i);
@@ -255,4 +279,6 @@ submit.addEventListener("click", function() {
         current.className = "hidden";
       }
     }
-});}
+});
+///////////
+}
