@@ -214,9 +214,22 @@ li{
 .open{
   background-color: transparent !important;
 }
+
 @media only screen and (min-width: 642px) {
   .navbar{
       background:transparent;
+  }
+
+}
+.part-icon{
+  display: none;
+  visibility: hidden;
+}
+@media only screen and (min-width: 762px) {
+  .part-icon{
+    visibility:visible;
+    color: white;
+    margin: 1px 10px;
   }
   .part{
     background:transparent;

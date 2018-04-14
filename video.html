@@ -64,6 +64,10 @@
                         </li>
                         <li><a href='./video.html'>partII</a></li>
                         <li><a href='#partIII'>partIII</a></li>
+                        <li class="part-icon"><i class="fas fa-user"></i></li>
+                        <li class="part-icon"><i class="fas fa-flag"></i></i></li>
+                        <li class="part-icon"><i class="fas fa-envelope"></i></li>
+                        <li class="part-icon">  <i class="fas fa-check-square"></i></li>
                     </ul>
 
                 </div>
@@ -207,7 +211,19 @@
     .navbar-collapse{
       border-color: transparent !important;
     }
-
+    .part-icon{
+      display: none;
+      visibility: hidden;
+      position: absolute !important;
+    }
+    @media only screen and (min-width: 762px) {
+      .part-icon{
+        position: static !important;
+        visibility:visible;
+        color: white;
+        margin: 12px 10px;
+      }
+    }
     body{
       background-color:#222;
     }
