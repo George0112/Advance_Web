@@ -160,7 +160,7 @@ window.onload = function() {
 //////////////////sidebar//////////////////////////////////////
     var sidesrc = jQuery.parseJSON(JSON.stringify(sidebarsrc));
     var sidebar = document.querySelector(".sidebar");
-    console.log(sidesrc);
+    console.log(sidesrc.newest.length);
   //sidebar newest
 
     for(var i = 0;i < sidesrc.newest.length;i++){
