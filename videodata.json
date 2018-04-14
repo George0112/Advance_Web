@@ -56,4 +56,22 @@ videos =
   }
 ];
 indexsrc = {"src":"https://cdn.voicetube.com/assets/img/banner02.jpg"};
-sidebarsrc = {"src":"https://cdn.voicetube.com/assets/thumbnails/UoLWYhwROBI.jpg"};
+sidebarsrc = {"src":"https://cdn.voicetube.com/assets/thumbnails/UoLWYhwROBI.jpg",
+              "newest":[
+                {
+                  "title":"每天堅持5分鐘，1個月後大不同！",
+                  "owner":"EF English Live"
+                },
+                {
+                  "title":"【免費體驗】5 分鐘檢測英文能力",
+                  "owner":"VoiceTube"
+                },
+                {
+                  "title":"每天25分鐘，聽懂CNN",
+                  "owner":"EF English Live"
+                },
+                {
+                  "title":"你知道錯在哪嗎？﹥﹥看答案",
+                  "owner":"EF English Live"
+                }
+                ]};

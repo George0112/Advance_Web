@@ -83,6 +83,11 @@ h3{
 .thumbnail{
   min-height: 280px;
   min-width: 170px;
+}
+@media only screen and (max-width: 991px) {
+  .frame{
+    width:100%;
+  }
 
 }
 .btn-tag{
@@ -244,4 +249,26 @@ li{
 }
 .icon-bar{
   background-color: white !important;
+}
+.sidetitle{
+  font-size: 20px;
+  color: #900;
+  font-weight: 700;
+  line-height: 40px;
+  padding: 2px;
+  border-bottom: 2px solid grey;
+}
+.itemowner{
+  font-size: 12px;
+  border-bottom: 1px dashed #A8A8A8;
+}
+.itemtitle{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 16px;
+  color: #C24F19;
+  padding: 10px 0;
+}
+.sidebar{
+  text-align: center;
 }
