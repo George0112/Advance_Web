@@ -1,6 +1,13 @@
 
 var url=window.location.href;
-
+var engCaption=1;
+var cnCaption=0;
+function captionLgnFunc(lng){
+    if(lng=="eng") engCaption=(engCaption==1)?0:1;
+    if(lng=="cn") engCaption=(engCaption==1)?0:1;
+    alert(engCaption);
+    
+}
 function add_subtitude(){
     json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
@@ -94,6 +101,18 @@ function playAt(index) {
 	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
     if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
     console.log('playAt render')
+    //////////////////////
+    $.post("https://translation.googleapis.com/language/translate/v2?",
+    {
+        key: "AIzaSyAGjI6nBCUK1QAjqWxSuLFdWcv38pKENJ8",
+        q: "apple",
+        target:"zh-TW"
+    },
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+
+    //////////////////////////////////////
 	$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[index].text + "</p>");
 	$(".list-group-item").each(function(){
         $(this).css("background-color", "white");
