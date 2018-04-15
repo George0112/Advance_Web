@@ -1,11 +1,25 @@
 
 var url=window.location.href;
 var engCaption=1;
-var cnCaption=0;
+var cnCaption=1;
 function captionLgnFunc(lng){
-    if(lng=="eng") engCaption=(engCaption==1)?0:1;
-    if(lng=="cn") engCaption=(engCaption==1)?0:1;
-    alert(engCaption);
+    if(lng=="eng"){
+        if(engCaption==1)
+            $('#eng_caption').css("color", "white");
+        else
+            $('#eng_caption').css("color", "rgb(255,0,0)");  
+        
+        engCaption=(engCaption==1)?0:1;
+    }
+    if(lng=="cn") {
+        if(cnCaption==1)
+            $('#cn_caption').css("color", "white");
+        else
+            $('#cn_caption').css("color", "rgb(255,0,0)");  
+            
+        cnCaption=(cnCaption==1)?0:1;
+    }
+    searchForSubtitle();
     
 }
 function add_subtitude(){
@@ -102,18 +116,32 @@ function playAt(index) {
     if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
     console.log('playAt render')
     //////////////////////
+    
     $.post("https://translation.googleapis.com/language/translate/v2?",
     {
         key: "AIzaSyAGjI6nBCUK1QAjqWxSuLFdWcv38pKENJ8",
-        q: "apple",
+        q: json[0].transcripts[index].text,
         target:"zh-TW"
     },
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+    if(engCaption && cnCaption){
+        $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[index].text +"<br/>" + data.data.translations[0].translatedText+ "</p>");
+    }
+    else if(engCaption && !cnCaption){
+        $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[index].text + "</p>");
+    }
+    else if(!engCaption && cnCaption){
+        $("#underSubtitles").html("<p id='underSubtitle'> " + data.data.translations[0].translatedText + "</p>");
+    }
+    else {
+        $("#underSubtitles").html("<p id='underSubtitle'> " +""+ "</p>");
+    }
+    
     });
 
     //////////////////////////////////////
-	$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[index].text + "</p>");
+    // if(engCaption==1 && cnCaption==1)
+    //     $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[index].text +"<br/>" + cnCaptionCon+ "</p>");
 	$(".list-group-item").each(function(){
         $(this).css("background-color", "white");
     });
@@ -137,8 +165,31 @@ function searchForSubtitle(){
 		i++;
 	}
 	i--;
-	if(i==-1)i=0;
-	$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[i].text + "</p>");
+    if(i==-1)i=0;
+    /////////////////////////////
+    $.post("https://translation.googleapis.com/language/translate/v2?",
+    {
+        key: "AIzaSyAGjI6nBCUK1QAjqWxSuLFdWcv38pKENJ8",
+        q: json[0].transcripts[i].text,
+        target:"zh-TW"
+    },
+    function(data, status){
+   
+    if(engCaption && cnCaption){
+        $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[i].text +"<br/>" + data.data.translations[0].translatedText+ "</p>");
+    }
+    else if(engCaption && !cnCaption){
+        $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[i].text + "</p>");
+    }
+    else if(!engCaption && cnCaption){
+        $("#underSubtitles").html("<p id='underSubtitle'> " + data.data.translations[0].translatedText + "</p>");
+    }
+    else {
+        $("#underSubtitles").html("<p id='underSubtitle'> " +""+ "</p>");
+    }
+    });
+    ////////////////////////////
+	//$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[i].text + "</p>");
 	$(".list-group-item").each(function(){
         $(this).css("background-color", "white");
     });
@@ -169,7 +220,27 @@ function renderSubtitle(){
 
 function changeSubtitle(){
 	if(player.getPlayerState()==1 && changeState == false){
-		$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[currentSubtitle].text + "</p>");
+        $.post("https://translation.googleapis.com/language/translate/v2?",
+        {
+            key: "AIzaSyAGjI6nBCUK1QAjqWxSuLFdWcv38pKENJ8",
+            q: json[0].transcripts[currentSubtitle].text,
+            target:"zh-TW"
+        },
+        function(data, status){
+        if(engCaption && cnCaption){
+            $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[currentSubtitle].text +"<br/>" + data.data.translations[0].translatedText+ "</p>");
+        }
+        else if(engCaption && !cnCaption){
+            $("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[currentSubtitle].text + "</p>");
+        }
+        else if(!engCaption && cnCaption){
+            $("#underSubtitles").html("<p id='underSubtitle'> " + data.data.translations[0].translatedText + "</p>");
+        }
+        else {
+            $("#underSubtitles").html("<p id='underSubtitle'> " +""+ "</p>");
+        }
+        });
+		//$("#underSubtitles").html("<p id='underSubtitle'> " + json[0].transcripts[currentSubtitle].text + "</p>");
 		$(".list-group-item").each(function(){
 			$(this).css("background-color", "white");
 		});
