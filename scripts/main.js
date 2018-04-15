@@ -232,11 +232,11 @@ window.onload = function() {
         }
         if (osTop >= clientHeight) {
               // obtn.style.display = 'block';
-
+              obtn.style.display = 'block';
               obtn.style.opacity = 1;
             }else{
                 // obtn.style.display = 'none';
-
+                  obtn.style.display = 'none';
                 obtn.style.opacity = 0;
             }
 
