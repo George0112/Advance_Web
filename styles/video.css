@@ -1,0 +1,128 @@
+.col{
+    align-content: center;
+    align-self: center;
+}
+.iframe{
+    align-self: center;
+}
+nav{
+    display: block;
+    margin: 0 0 70px 0;
+}
+body{
+
+    position: relative;
+}
+.scroll-text{
+    height: 400px;
+    overflow: scroll;
+}
+.control-time{
+    overflow: scroll;
+<<<<<<< HEAD
+    padding: 20px;
+=======
+    padding: 0 20px 20px 20px;
+>>>>>>> fe397220793f34d203cc07d645f7523c2e4f5b87
+    margin-top: 0px;
+    max-height: 440px;
+}
+@media only screen and (max-width: 992px) {
+  .control-time{
+    padding:20px;
+    margin-top: 20px;
+  }
+
+}
+.container{
+  margin-top: 70px;
+}
+#below{
+  /*position: relative;*/
+  background-color: black;
+  color: white;
+  padding-bottom: 10px;
+}
+#playScreen{
+  background-color: black;
+  position: relative;
+}
+#underSubtitles{
+  align-content: center;
+  min-height:10px;
+}
+
+#underSubtitle{
+  text-align: center;
+  font-size: 20px;
+}
+
+.fb-like{
+  display: inline;
+}
+
+.checkbox{
+  display: inline;
+  position: absolute;
+  right: 10px;
+  bottom: -3px;
+}
+
+#repeatText{
+  margin-right: 40px;
+  font-size: 20px;
+}
+
+.navbar-brand{
+  font-size: 42px;
+  font-family: 'Do Hyeon', serif;
+  color: snow !important;
+}
+li{
+  font-family: 'Gugi', serif;
+
+}
+.vMiddle{
+ margin-top: 12px;
+ font-size: 20px;
+}
+.navbar-right{
+  padding-top: 13px;
+}
+.navbar{
+  background:rgba(0,0,0,0.7);
+  box-shadow: 0 0px 0px rgba(0,0,0,0) !important;
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: snow !important;
+}
+.videoTitle{
+  font-size: 28px;
+  margin: 30px 0 25px 0;
+  color: white;
+}
+.dropdown-menu{
+  padding: 0;
+}
+.icon-bar{
+  background-color: white !important;
+}
+.navbar-collapse{
+  border-color: transparent !important;
+}
+.part-icon{
+  display: none;
+  visibility: hidden;
+  position: absolute !important;
+}
+@media only screen and (min-width: 762px) {
+  .part-icon{
+    position: static !important;
+    visibility:visible;
+    color: white;
+    margin: 12px 10px;
+  }
+}
+body{
+  background-color:#222;
+}

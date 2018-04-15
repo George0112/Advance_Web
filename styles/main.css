@@ -272,3 +272,28 @@ li{
 .sidebar{
   text-align: center;
 }
+/*script*/
+.col{
+    align-content: center;
+    align-self: center;
+}
+.iframe{
+    align-self: center;
+}
+nav{
+    display: block;
+    margin: 0 0 70px 0;
+}
+body{
+    position: relative;
+}
+.scroll-text{
+    height: 400px;
+    overflow: scroll;
+}
+.control-time{
+    overflow: scroll;
+    height: 380px;
+    padding: 20px;
+    margin-top: 20px'
+}
