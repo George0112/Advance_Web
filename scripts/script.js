@@ -2,6 +2,7 @@
 var url=window.location.href;
 var engCaption=1;
 var cnCaption=1;
+var get_dict = false;
 function captionLgnFunc(lng){
     if(lng=="eng"){
         if(engCaption==1)
@@ -22,13 +23,48 @@ function captionLgnFunc(lng){
     searchForSubtitle();
     
 }
+
+$(window).click((event) => {
+    if(!$(event.target).closest('.popup').length){
+        $('.popuptext').remove();
+        get_dict = false;
+        console.log(get_dict);
+    }
+});
+
 function add_subtitude(){
     json = JSON.parse(subtitle);
     $.each(json[0].transcripts, function(index, d){
-		var sub = "<a class='list-group-item' onclick='playAt(" + index + " )' id='subtitle" + index + "'>" + d.text + "</a>"
+        var text = '';
+        id=0;
+        d.text.split(' ').map((i)=>{
+            console.log(i);
+            text += `<span class='popup' id='text`+id+`' onclick='ask_google("`+i+'",'+index+','+id+`)')>` + i+ " </span>";
+            id++;
+        });
+		var sub = "<a class='list-group-item' onclick='playAt(" + index + ")' id='subtitle" + index + "'>" + text + "</a>"
         $(sub).appendTo('#subtitle');
     });
 };
+
+function ask_google(word, index, id){
+    get_dict = true;
+    console.log(get_dict, word);
+    $.post("https://translation.googleapis.com/language/translate/v2?",
+    {
+        key: "AIzaSyAGjI6nBCUK1QAjqWxSuLFdWcv38pKENJ8",
+        q: json[0].transcripts[index].text,
+        target:"zh-TW"
+    },(data, status) => {
+        appending = '#subtitle' + index + ' #text' + id;
+        console.log(appending);
+        $(appending).remove('#myPopup');
+        $('.popuptext').remove();
+        $(appending).append('<span class="popuptext" id="myPopup">'+data.data.translations[0].translatedText+'</span>');
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    });
+}
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -111,6 +147,7 @@ function stopVideo() {
 }
 
 function playAt(index) {
+    if(get_dict)return;
 	if(typeof(doneTimeOut)!=='undefined')clearTimeout(doneTimeOut);
 	if(typeof(changeTimeOut)!=='undefined')clearTimeout(changeTimeOut);
     if(typeof(renderTimeOut)!=='undefined')clearTimeout(renderTimeOut);
