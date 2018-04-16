@@ -53,7 +53,7 @@ function ask_google(word, index, id){
     $.post("https://translation.googleapis.com/language/translate/v2?",
     {
         key: "AIzaSyAGjI6nBCUK1QAjqWxSuLFdWcv38pKENJ8",
-        q: json[0].transcripts[index].text,
+        q: word,
         target:"zh-TW"
     },(data, status) => {
         appending = '#subtitle' + index + ' #text' + id;

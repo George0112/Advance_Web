@@ -193,3 +193,25 @@ body{
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+.fb_iframe_widget,
+.fb_iframe_widget span,
+.fb_iframe_widget span iframe[style] {
+  min-width: 100% !important;
+  width: 100% !important;
+  color: #fff;
+}
+
+#fb-comments { 
+  width: 100%;
+  float: left;
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #fff; 
+}
+
+#comments a { color: #ff6600; }
+
+#my-fb-comments{
+  background-color: #fff;
+  color:#fff;
+}
